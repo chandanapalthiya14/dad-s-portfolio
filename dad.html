@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Srinu Contractor - Masonry Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #f7f1e1;
+      --card-bg: #fffaf3;
+      --accent1: #a0522d;
+      --accent2: #8b4513;
+      --text-main: #2c1a0b;
+      --text-subtle: #5a3b22;
+    }
+
+    body.dark-mode {
+      --bg-color: #1e1b16;
+      --card-bg: #2c251f;
+      --accent1: #d2691e;
+      --accent2: #cd853f;
+      --text-main: #f5f5dc;
+      --text-subtle: #d2b48c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-main);
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.7;
+    }
+
+    nav {
+      background: var(--card-bg);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--accent1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: var(--text-subtle);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: var(--accent1); }
+
+    .theme-toggle {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      background: var(--accent2);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover { background: var(--accent1); }
+
+    header.hero {
+      position: relative;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('background.jpg') center/cover no-repeat;
+      
+      transition: transform 5s ease;
+    }
+
+    header.hero:hover::before { transform: scale(1.05); }
+
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.85));
+      z-index: 1;
+    }
+
+    body.dark-mode header.hero::before { opacity: 0.5; filter: brightness(0.5); }
+
+    header.hero * { position:sticky; z-index: 2; }
+
+    header.hero h1 {
+      font-size: 3rem;
+      color: var(--accent1);
+      margin-bottom: 20px;
+    }
+
+    header.hero p {
+      font-size: 1.4rem;
+      color: var(--text-subtle);
+      margin-bottom: 450px;
+    }
+
+    header.hero a {
+      display: inline-block;
+      padding: 12px 40px;
+      background: var(--accent2);
+      color: #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    header.hero a:hover { background: var(--accent1); }
+    
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    section h2 {
+      text-align: center;
+      color: var(--accent2);
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--accent1);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    .separator {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent2), var(--accent1));
+      margin: 50px auto;
+      max-width: 800px;
+      border-radius: 2px;
+    }
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+    .about img {
+      width: 350px;
+      max-width: 150%;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .about-text {
+  flex: 1;
+  min-width: 280px;
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: 700px;
+  color: var(--text-subtle);
+}
+    .about-text h3 {
+      color: var(--accent1);
+      margin-bottom: 15px;
+    }
+
+.image-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.image-row img {
+  flex: 1;
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.image-row img:hover {
+  transform: scale(1.03);
+}
+
+
+
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .card h3 {
+      color: var(--accent1);
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--text-subtle);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      object-fit: cover;
+      height: 200px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      height: 180px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover { transform: scale(1.03); }
+
+    footer {
+      background: var(--card-bg);
+      text-align: center;
+      padding: 25px;
+      color: var(--text-subtle);
+      border-top: 2px solid var(--accent1);
+    }
+    .full-width-image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.full-width-image:hover {
+  transform: scale(1.03);
+}
+
+
+    @media (max-width: 768px) {
+      header.hero { height: 65vh; }
+      header.hero h1 { font-size: 2.2rem; }
+      header.hero p { font-size: 1.1rem; }
+      section h2 { font-size: 2rem; }
+      .about-text { padding: 20px; }
+      .card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+  </nav>
+
+  <header class="hero">
+    <h1>Srinu Contractor</h1>
+    <p>Experienced Masonry & Construction Services</p>
+    <a href="#contact">Get in Touch</a>
+  </header>
+
+  <div class="separator"></div>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about">
+      <img src="dad pic1.jpg" alt="srinu Photo">
+      <div class="about-text">
+        <h3>Hello! I'm Srinu Chouhan</h3>
+        <p>
+          Professional mason with over 23 years of experience in residential and commercial construction. 
+          Dedicated to quality workmanship, timely delivery, and customer satisfaction.
+        </p>
+        <p>
+          <strong>Phone:</strong> +91 9177248309<br>
+          <strong>Email:</strong> srinupalthaya@gmail.com<br>
+          <strong>Location:</strong> Hyderabad, India
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section id="services">
+    <h2>My Services</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Brickwork</h3>
+        <p>High-quality bricklaying for houses, walls, and structures.</p>
+      </div>
+      <div class="card">
+        <h3>Plastering</h3>
+        <p>Smooth, durable plaster finishes for interior and exterior walls.</p>
+      </div>
+      <div class="card">
+        <h3>Tile Work</h3>
+        <p>Bathroom, kitchen, and flooring tiles installed professionally.</p>
+      </div>
+      <div class="card">
+        <h3>Renovations</h3>
+        <p>Modernizing and restoring existing structures with care.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Residential House Construction</h3>
+        <p>Complete foundation to finish work.</p>
+        <div class="gallery">
+          <img src="house1.jpg" alt="House 1">
+          <img src="house 2.jpg" alt="House 2">
+          <img src="house 3.jpg" alt="House 3">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Boundary Wall</h3>
+        <p>Sturdy, well-finished boundary walls for safety and privacy.</p>
+        <div class="gallery">
+          <img src="wall 1.jpg" alt="Wall 1">
+          <img src="wall 2.jpg" alt="Wall 2">
+          <img src="wall 3.jpg" alt="Wall 2">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Floor & Tile Work</h3>
+        <p>High-quality tiling for bathrooms, kitchens, and floors.</p>
+        <div class="gallery">
+          <img src="tile 1.jpg" alt="Tile 1">
+          <img src="tile 2.jpg" alt="Tile 2">
+          <img src="tile 3.jpg" alt="Tile 2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="card-grid">
+      <div class="card">
+        <p>"Srinu did fantastic work on our house. Very reliable and quality finish!"</p>
+        <h3>- Priya S.</h3>
+      </div>
+      <div class="card">
+        <p>"Professional, on-time, and the results exceeded expectations."</p>
+        <h3>- Anand K.</h3>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="about-text" style="max-width:600px; margin:auto;">
+      <p>
+        Let's discuss your next project! Call me at <strong>+91 9177248309</strong> 
+        or email <strong>srinupalthaya@gmail.com</strong>. I look forward to helping you build your vision.
+      </p>
+      <div class="image-row">
+  <img src="dad pic2.jpg" alt="Image 1">
+  <img src="dad pic3.jpg" alt="Image 2">
+  <img src="dad pic4.jpg" alt="Image 3">
+</div>
+
+
+      
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Srinu Contractor | Masonry & Construction Services</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
